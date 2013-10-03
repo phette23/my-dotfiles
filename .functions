@@ -192,13 +192,6 @@ function getcertnames() {
 	fi
 }
 
-# Manually remove a downloaded app or file from the quarantine
-function unquarantine() {
-	for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
-		xattr -r -d "$attribute" "$@"
-	done
-}
-
 # Install Grunt plugins and add them as `devDependencies` to `package.json`
 # Usage: `gi contrib-watch contrib-uglify zopfli`
 function gi() {

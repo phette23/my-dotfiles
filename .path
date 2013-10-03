@@ -2,5 +2,4 @@
 # so brew packages are used over Mac OS defaults (e.g. git)
 # 2) global NPM packages (e.g. Grunt, Yeoman)
 # 3) rbenv (ruby versions & their associated gems)
-# 4) Scripted app (NB: Mac only)
-export PATH="/usr/local/bin:/usr/local/share/npm/bin:$(rbenv prefix)/bin:/Applications/Scripted/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/share/npm/bin:$(rbenv prefix)/bin:$PATH"

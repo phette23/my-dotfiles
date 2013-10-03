@@ -1,0 +1,384 @@
+# Simple calculator
+function calc() {
+	local result=""
+	result="$(printf "scale=10;$*\n" | bc --mathlib | tr -d '\\\n')"
+	#                       └─ default (when `--mathlib` is used) is 20
+	#
+	if [[ "$result" == *.* ]]; then
+		# improve the output for decimal numbers
+		printf "$result" |
+		sed -e 's/^\./0./'        `# add "0" for cases like ".5"` \
+		    -e 's/^-\./-0./'      `# add "0" for cases like "-.5"`\
+		    -e 's/0*$//;s/\.$//'   # remove trailing zeros
+	else
+		printf "$result"
+	fi
+	printf "\n"
+}
+
+# Create a new directory and enter it
+function mkd() {
+	mkdir -p "$@" && cd "$@"
+}
+
+# Change working directory to the top-most Finder window location
+function cdf() { # short for `cdfinder`
+	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+}
+
+# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
+function targz() {
+	local tmpFile="${@%/}.tar"
+	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1
+
+	size=$(
+		stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
+		stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
+	)
+
+	local cmd=""
+	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+		# the .tar file is smaller than 50 MB and Zopfli is available; use it
+		cmd="zopfli"
+	else
+		if hash pigz 2> /dev/null; then
+			cmd="pigz"
+		else
+			cmd="gzip"
+		fi
+	fi
+
+	echo "Compressing .tar using \`${cmd}\`…"
+	"${cmd}" -v "${tmpFile}" || return 1
+	[ -f "${tmpFile}" ] && rm "${tmpFile}"
+	echo "${tmpFile}.gz created successfully."
+}
+
+# Determine size of a file or total size of a directory
+function fs() {
+	if du -b /dev/null > /dev/null 2>&1; then
+		local arg=-sbh
+	else
+		local arg=-sh
+	fi
+	if [[ -n "$@" ]]; then
+		du $arg -- "$@"
+	else
+		du $arg .[^.]* *
+	fi
+}
+
+# Use Git’s colored diff when available
+hash git &>/dev/null
+if [ $? -eq 0 ]; then
+	function diff() {
+		git diff --no-index --color-words "$@"
+	}
+fi
+
+# Create a data URL from a file
+function dataurl() {
+	local mimeType=$(file -b --mime-type "$1")
+	if [[ $mimeType == text/* ]]; then
+		mimeType="${mimeType};charset=utf-8"
+	fi
+	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
+}
+
+# Create a git.io short URL
+function gitio() {
+	if [ -z "${1}" -o -z "${2}" ]; then
+		echo "Usage: \`gitio slug url\`"
+		return 1
+	fi
+	curl -i http://git.io/ -F "url=${2}" -F "code=${1}"
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+	local port="${1:-8000}"
+	sleep 1 && open "http://localhost:${port}/" &
+	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+}
+
+# Start a PHP server from a directory, optionally specifying the port
+# (Requires PHP 5.4.0+.)
+function phpserver() {
+	local port="${1:-4000}"
+	local ip=$(ipconfig getifaddr en0)
+	sleep 1 && open "http://${ip}:${port}/" &
+	php -S "${ip}:${port}"
+}
+
+# Compare original and gzipped file size
+function gz() {
+	local origsize=$(wc -c < "$1")
+	local gzipsize=$(gzip -c "$1" | wc -c)
+	local ratio=$(echo "$gzipsize * 100/ $origsize" | bc -l)
+	printf "orig: %d bytes\n" "$origsize"
+	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio"
+}
+
+# Syntax-highlight JSON strings or files
+# Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
+function json() {
+	if [ -t 0 ]; then # argument
+		python -mjson.tool <<< "$*" | pygmentize -l javascript
+	else # pipe
+		python -mjson.tool | pygmentize -l javascript
+	fi
+}
+
+# All the dig info
+function digga() {
+	dig +nocmd "$1" any +multiline +noall +answer
+}
+
+# Escape UTF-8 characters into their 3-byte format
+function escape() {
+	printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
+	# print a newline unless we’re piping the output to another program
+	if [ -t 1 ]; then
+		echo # newline
+	fi
+}
+
+# Decode \x{ABCD}-style Unicode escape sequences
+function unidecode() {
+	perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
+	# print a newline unless we’re piping the output to another program
+	if [ -t 1 ]; then
+		echo # newline
+	fi
+}
+
+# Get a character’s Unicode code point
+function codepoint() {
+	perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))"
+	# print a newline unless we’re piping the output to another program
+	if [ -t 1 ]; then
+		echo # newline
+	fi
+}
+
+# Show all the names (CNs and SANs) listed in the SSL certificate
+# for a given domain
+function getcertnames() {
+	if [ -z "${1}" ]; then
+		echo "ERROR: No domain specified."
+		return 1
+	fi
+
+	local domain="${1}"
+	echo "Testing ${domain}…"
+	echo # newline
+
+	local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
+		| openssl s_client -connect "${domain}:443" 2>&1);
+
+	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
+		local certText=$(echo "${tmp}" \
+			| openssl x509 -text -certopt "no_header, no_serial, no_version, \
+			no_signame, no_validity, no_issuer, no_pubkey, no_sigdump, no_aux");
+			echo "Common Name:"
+			echo # newline
+			echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//";
+			echo # newline
+			echo "Subject Alternative Name(s):"
+			echo # newline
+			echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
+				| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2
+			return 0
+	else
+		echo "ERROR: Certificate not found.";
+		return 1
+	fi
+}
+
+# Add note to Notes.app (OS X 10.8)
+# Usage: `note 'title' 'body'` or `echo 'body' | note`
+# Title is optional
+function note() {
+	local title
+	local body
+	if [ -t 0 ]; then
+		title="$1"
+		body="$2"
+	else
+		title=$(cat)
+	fi
+	osascript >/dev/null <<EOF
+tell application "Notes"
+	tell account "iCloud"
+		tell folder "Notes"
+			make new note with properties {name:"$title", body:"$title" & "<br><br>" & "$body"}
+		end tell
+	end tell
+end tell
+EOF
+}
+
+# Add reminder to Reminders.app (OS X 10.8)
+# Usage: `remind 'foo'` or `echo 'foo' | remind`
+function remind() {
+	local text
+	if [ -t 0 ]; then
+		text="$1" # argument
+	else
+		text=$(cat) # pipe
+	fi
+	osascript >/dev/null <<EOF
+tell application "Reminders"
+	tell the default list
+		make new reminder with properties {name:"$text"}
+	end tell
+end tell
+EOF
+}
+
+# Manually remove a downloaded app or file from the quarantine
+function unquarantine() {
+	for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
+		xattr -r -d "$attribute" "$@"
+	done
+}
+
+# Install Grunt plugins and add them as `devDependencies` to `package.json`
+# Usage: `gi contrib-watch contrib-uglify zopfli`
+function gi() {
+	local IFS=,
+	eval npm install --save-dev grunt-{"$*"}
+}
+
+# `s` with no arguments opens the current directory in Sublime Text, otherwise
+# opens the given location
+function s() {
+  if [ $# -eq 0 ]; then
+    subl .
+  else
+    subl "$@"
+  fi
+}
+
+# `v` with no arguments opens the current directory in Vim, otherwise opens the
+# given location
+function v() {
+  if [ $# -eq 0 ]; then
+    vim .
+  else
+    vim "$@"
+  fi
+}
+
+# `o` with no arguments opens current directory, otherwise opens the given
+# location
+function o() {
+  if [ $# -eq 0 ]; then
+    open .
+  else
+    open "$@"
+  fi
+}
+
+#########################
+# My Personal Functions #
+#########################
+
+# Top 10 BASH commands used
+# from stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash#answer-68390
+function top10() {
+    history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head -n 11 | tail
+}
+
+# internal functions for use in cheat sheets below
+function colorcheat() {
+    echo -n "$ORANGE$1$RESET"
+    echo -e "$2"
+}
+function cheattitle() {
+    echo -e "$PURPLE\t\t$1\n$RESET"
+}
+
+# Misc tips from above link
+function cheatmoar() {
+    cheattitle "more bash tricks"
+    colorcheat '^+R' "\t\t-> reverse search through history"
+    colorcheat 'Quick Copy' "\t-> cp /home/foo/realllylongname.cpp{,-old}\n\t\tExpands to:\n\t\tcp /home/foo/realllylongname.cpp /home/foo/realllylongname.cpp-old"
+    colorcheat 'cd -' "\t\t-> go back to previous directory"
+    colorcheat '^str^str2' "\t-> replaces str in the last cmd with str2 & executes it"
+    echo -en "$ORANGE" && echo -en '! tricks ' && echo -en "$RESET\t-> the " && echo -e '!$, !^ & !* expandos return, from the most recent line:\n\t\tthe last item, first non-command item, & all non-command items'
+    echo -en "$ORANGE" && echo -en 'cmd !!:* ' && echo -e "$RESET\t-> run cmd with the previous ones' arguments"
+    colorcheat 'ESC .' "\t\t-> inserts arguments from last command"
+    colorcheat '\cmd' "\t\t-> do not use the alias for 'cmd'"
+    echo -en "$ORANGE" && echo -en '!?foo?:p ' && echo -en "$RESET\t-> search for last cmd containing 'foo,' " && echo -e '!?foo executes'
+    echo
+}
+
+# Print cheat sheet of dotfiles functions/aliases
+function cheat() {
+    cheattitle "bash cheatsheet"
+    colorcheat 'c' "\t\t-> trim new lines & copy to clipboard"
+    colorcheat '^+A' "\t\t-> jump to beginning of line"
+    colorcheat '^+E' "\t\t-> jump to end of line"
+    colorcheat '^+K' "\t\t-> delete to end of line"
+    colorcheat '^+U' "\t\t-> delete to beginning of line"
+    colorcheat '^+W' "\t\t-> delete word next to cursor"
+    colorcheat 'dataurl' "\t\t-> make data URL from file"
+    colorcheat 'emptytrash' "\t-> empties the trash"
+    colorcheat 'gurl' "\t\t-> Gzip->enabled curl"
+    colorcheat 'httpcompression' "\t-> test if URL uses Gzip"
+    colorcheat 'lsd' "\t\t-> list directories only"
+    colorcheat 'note $HEAD $MSG' "\t-> add to Notes app"
+    colorcheat 'o' "\t\t-> alias for open"
+    colorcheat 'oo' "\t\t-> open current directory"
+    colorcheat 'remind' "\t\t-> add string as new in Reminders app"
+    colorcheat 'sudo !!' "\t\t-> run previous command with sudo"
+    colorcheat 'spot(off|on)' "\t-> turn Spotlight off & on"
+    colorcheat 'tar -zxvf $FILE' "\t-> unzip tar ball"
+    colorcheat 'urlencode' "\t-> URL encode string"
+    echo
+}
+
+function gcheat() {
+    # template: echo -e "$ORANGE cmd \t\t\t$RESET— description"
+    cheattitle "git cheatsheet"
+    colorcheat 'g d' "\t\t\t-> diff between latest commit & current state"
+    colorcheat 'g di $N' "\t\t\t-> diff betw N commits ago & current state"
+    colorcheat 'g go X' "\t\t\t-> goto branch X, create if doesn't exist"
+    colorcheat 'g l' "\t\t\t-> view history graph & log"
+    colorcheat 'g reset $HASH' "\t\t-> revert to commit HASH but keep changes in working dir\n\t\t\tadd --hard flag to erase changes"
+    colorcheat 'g checkout -- <file>' "\t-> unstage changes to <file>"
+    echo
+}
+
+# Open series of work URLs
+function work() {
+    open 'https://libanswers.com/login.php?iid=723&iid=723' 'https://drive.google.com/#activity' 'https://www.rememberthemilk.com/home/phette23/'
+}
+
+# sass --watch syntax is too verbose
+function sw() {
+    sass --watch $1:$2 --style compressed
+}
+
+function backup() {
+    if [ -d /Volumes/share ]; then
+        # flags:
+        # a = archive mode, makes recursive & a host of other options
+        # v = verbose
+        # u = if destination file is more recent, keep it
+        # z = use compression
+        rsync -avuz --progress --exclude "iTunes/iTunes Music/Podcasts/" --exclude "iTunes/Album Artwork/" ~/Music /Volumes/share/
+        rsync -avuz --progress ~/Movies/ /Volumes/share/Video/
+        rsync -avuz --progress ~/Documents/zzzArc /Volumes/share/
+        # b = create backups
+        rsync -avuzb --progress ~/Documents/OvalII.sparsebundle /Volumes/share/OvalII.sparsebundle
+        rsync -avuzb --progress ~/Documents/nsn.dmg /Volumes/share/nsn.dmg
+        # run Spideroak backups w/o the GUI
+        /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode
+    else
+        echo "Connect to backup drive first."
+    fi
+}

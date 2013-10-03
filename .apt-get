@@ -1,0 +1,41 @@
+#! /bin/bash
+# Script to grab major software for a fresh Ubuntu install
+
+# First update apt-get
+sudo apt-get update
+
+# Install all my packages
+# -y = "assume yes to all prompts & run non-interactively"
+sudo apt-get -y install \
+	adobe-flashplugin \
+	apache2 \
+	audacity \
+	chromium-browser \
+  cowsay \
+	curl \
+	epiphany-browser \
+	git \
+	gimp \
+	gnome-do \
+	inkscape \
+	lynx \
+	midori \
+  mongodb \
+	mysql-server \
+  ngrep \
+  optipng \
+  phantomjs \
+  php5-cli \
+  php-pear \
+  pngcrush \
+	ruby1.9.1 \
+	scribus \
+  source-highlight \
+	synaptic \
+	texlive-fonts-recommended \
+  vim \
+  yaz
+
+# Done! Dropbox is the only major item not in apt-get
+echo "Done! Don't forget to manually install Dropbox."
+xdg-open https://www.dropbox.com/install?os=lnx

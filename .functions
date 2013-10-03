@@ -236,10 +236,6 @@ function o() {
   fi
 }
 
-#########################
-# My Personal Functions #
-#########################
-
 # Top 10 BASH commands used
 # from stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash#answer-68390
 function top10() {

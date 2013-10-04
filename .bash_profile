@@ -11,7 +11,7 @@ unset file
 
 # source Mac-specific stuff only if on a mac
 if [[ $(uname) == "Darwin" ]]; then
-  source .mac
+  source ~/.mac
 fi
 
 # Case-insensitive globbing (used in pathname expansion)

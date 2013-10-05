@@ -10,9 +10,7 @@ done
 unset file
 
 # source Mac-specific stuff only if on a mac
-if [[ $(uname) == "Darwin" ]]; then
-  source ~/.mac
-fi
+[[ $(uname) == "Darwin" ]] && source ~/.mac
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob

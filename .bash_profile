@@ -39,3 +39,6 @@ complete -W "NSGlobalDomain" defaults
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+
+# load Node Version Manager
+[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh

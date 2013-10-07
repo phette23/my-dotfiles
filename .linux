@@ -1,2 +1,9 @@
 # Linux version of update command
 alias update='sudo gem update; sudo apt-get update; npm update npm -g; npm update -g --silent;'
+
+# make title of terminal tab the current directory's name
+# pwd | sed 's:/:\\
+# :g' | tail -n 1
+# => pwd, sed replace / for literal newline, tail take last line
+export PS1="\[\e]0;\$(pwd | sed 's:/:\\
+:g' | tail -n 1)\a\]$PS1"

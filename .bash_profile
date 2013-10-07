@@ -9,8 +9,9 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done
 unset file
 
-# source Mac-specific stuff only if on a mac
+# source OS-specific stuff
 [[ $(uname) == "Darwin" ]] && source ~/.mac
+[[ $(uname) == "Linux" ]] && source ~/.linux
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob

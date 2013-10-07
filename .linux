@@ -1,0 +1,2 @@
+# Linux version of update command
+alias update='sudo gem update; sudo apt-get update; npm update npm -g; npm update -g --silent;'

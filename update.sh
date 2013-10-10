@@ -1,6 +1,6 @@
 #!/bin/bash
 # more conservative version of bootstrap.sh
-for file in .{path,bash_prompt,exports,aliases,functions,extra,mac}; do
+for file in .{path,bash_prompt,exports,aliases,functions,extra,mac,linux}; do
     cp "$file" ~/"$file"
 done
 

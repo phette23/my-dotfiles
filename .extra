@@ -3,29 +3,8 @@ if command -v "rbenv" &> /dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
 
-# Check if brew is defined, run Homebrew-specific commands
-# Source for this condition:
-# stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script#answer-4785518
-if command -v "brew" &> /dev/null 2>&1; then
-    # Git Bash Completion for Homebrew package
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-
-    # Z from Homebrew
-    source `brew --prefix`/etc/profile.d/z.sh
-
-    # BASH completion for Homebrew
-    # See: github.com/mxcl/homebrew/wiki/Tips-N%27-Tricks
-    source $(brew --prefix)/Library/Contributions/brew_bash_completion.sh
-fi
-
 # If npm is available, add its bash completion
 if command -v "npm" &> /dev/null 2>&1; then
 		# See npm -l for command usage
 		source <(npm completion)
-fi
-
-# Show current directory (not full path only top-level)
-# in iTerm tab name
-if [ $ITERM_SESSION_ID ]; then
-	export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
 fi

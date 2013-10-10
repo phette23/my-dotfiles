@@ -1,6 +1,9 @@
 # Linux version of update command
 alias update='sudo gem update; sudo apt-get update; sudo apt-get upgrade; npm update npm -g --quiet; npm update -g --silent;'
 
+# source Z from Linux install location
+source /usr/local/etc/z/z.sh
+
 # make title of terminal tab the current directory's name
 # pwd | sed 's:/:\\
 # :g' | tail -n 1

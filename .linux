@@ -1,5 +1,5 @@
 # Linux version of update command
-alias update='sudo gem update; sudo apt-get update; npm update npm -g; npm update -g --silent;'
+alias update='sudo gem update; sudo apt-get update; sudo apt-get upgrade; npm update npm -g --quiet; npm update -g --silent;'
 
 # make title of terminal tab the current directory's name
 # pwd | sed 's:/:\\

@@ -3,13 +3,12 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
+alias ~="cd ~"
 alias -- -="cd -"
 
 # Shortcuts
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
 alias g="git"
 alias h="history"
 alias j="jobs"
@@ -20,19 +19,18 @@ alias gc="git commit -am"
 alias gd="git diff"
 
 # Node shortcuts
-# list only top-level global packages, pipe errors to null
+# list only top-level global packages
 alias npmg="npm ls -g --depth=0 2>/dev/null"
 
 # Default for pngcrush
 alias png='pngcrush -reduce -brute'
 # Syntax-highlighting cat on the command line
 # requires source-highlight from Homebrew
+# TODO: make work on Linux, below script is in /usr/share/source-highlight
 alias ccat='src-hilite-lesspipe.sh'
 # MARCgrep.pl
 # see: en.pusc.it/bib/MARCgrep
 alias mgrep='MARCgrep.pl'
-# Cataclysm
-alias catac='/Applications/cataclysm/cataclysm-launcher'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

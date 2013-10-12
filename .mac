@@ -25,6 +25,9 @@ fi
 
 # Aliases
 
+# Cataclysm
+alias catac='/Applications/cataclysm/cataclysm-launcher'
+
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo gem update; sudo softwareupdate -i -a; brew update; brew upgrade; npm update npm -g; npm update -g --silent;'
 

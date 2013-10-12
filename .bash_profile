@@ -40,4 +40,4 @@ complete -W "NSGlobalDomain" defaults
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
 # load Node Version Manager
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh
+[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh && nvm use default > /dev/null

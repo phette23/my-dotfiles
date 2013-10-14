@@ -11,14 +11,22 @@ sudo apt-get -y install \
 	apache2 \
 	audacity \
 	chromium-browser \
+  clang \
   cowsay \
 	curl \
 	epiphany-browser \
+  fonts-droid \
+  fonts-inconsolata \
+  fonts-linuxlibertine \
+  freeciv-server \
+  freeciv-client-gtk \
 	git \
 	gimp \
 	gnome-do \
+  gnome-dictionary \
 	inkscape \
 	lynx \
+  maximus \
 	midori \
   mongodb \
 	mysql-server \
@@ -28,12 +36,18 @@ sudo apt-get -y install \
   php5-cli \
   php-pear \
   pngcrush \
+  rbenv \
 	ruby1.9.1 \
 	scribus \
   source-highlight \
+  synapse \
 	synaptic \
+  terminator \
 	texlive-fonts-recommended \
+  tor \
+  vidalia \
   vim \
+  wine \
   yaz
 
 # Done! Dropbox is the only major item not in apt-get

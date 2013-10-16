@@ -3,6 +3,7 @@ npm install -g \
   bower \
   express \
   generator-angular \
+  generator-bookmarklet \
   generator-h5bp \
   generator-jekyllrb \
   grunt-cli \

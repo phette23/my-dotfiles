@@ -48,6 +48,7 @@ sudo apt-get -y install \
   vidalia \
   vim \
   wine \
+  xclip \
   yaz
 
 # Done! Dropbox is the only major item not in apt-get

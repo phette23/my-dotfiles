@@ -32,6 +32,7 @@ sudo apt-get -y install \
 	mysql-server \
   ngrep \
   optipng \
+  pandoc \
   phantomjs \
   php5-cli \
   php-pear \

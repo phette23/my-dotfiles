@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # install global NPM packages
 npm install -g \
   bower \

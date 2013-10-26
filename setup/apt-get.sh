@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 # Script to grab major software for a fresh Ubuntu install
 
 # First update apt-get

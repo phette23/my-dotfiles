@@ -16,3 +16,6 @@ source /usr/local/etc/z/z.sh
 # => pwd, sed replace / for literal newline, tail take last line
 export PS1="\[\e]0;\$(pwd | sed 's:/:\\
 :g' | tail -n 1)\a\]$PS1"
+
+# disable trackpad while typing in Openbox window manager
+[ $DESKTOP_SESSION == "openbox" ] && synclient MaxTapTime=0

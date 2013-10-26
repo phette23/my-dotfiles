@@ -24,10 +24,7 @@ alias npmg="npm ls -g --depth=0 2>/dev/null"
 
 # Default for pngcrush
 alias png='pngcrush -reduce -brute'
-# Syntax-highlighting cat on the command line
-# requires source-highlight from Homebrew
-# TODO: make work on Linux, below script is in /usr/share/source-highlight
-alias ccat='src-hilite-lesspipe.sh'
+
 # MARCgrep.pl
 # see: en.pusc.it/bib/MARCgrep
 alias mgrep='MARCgrep.pl'

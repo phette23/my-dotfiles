@@ -7,6 +7,9 @@ alias emptytrash='rm -rf ~/.local/share/Trash/files/*'
 # for piping text to clipboard, requires xclip
 alias clip='xclip -sel clip'
 
+# Source-Highlight, requires the package in apt
+alias ccat='/usr/share/source-highlight/src-hilite-lesspipe.sh'
+
 # source Z from Linux install location
 source /usr/local/etc/z/z.sh
 

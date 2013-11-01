@@ -47,6 +47,7 @@ sudo apt-get -y install \
 	terminator \
 	texlive-fonts-recommended \
 	tor \
+	tree \
 	vidalia \
 	vim \
 	wine \

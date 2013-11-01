@@ -6,7 +6,7 @@ I'm keeping the MIT license as that's what the original repo was under.
 
 ## To Use
 
-You can clone the whole project and run `bootstrap.sh` to get started. For a fresh install, the `.apt-get` and `.brew` scripts install packages using apt and homebrew respectively. The `.osx` script is a set of defaults for OS X. `update.sh` is meant to be run periodically to sync commonly updated files in the repo with the home directory.
+You can clone the whole project and run `bootstrap.sh` to get started. For a fresh install, the `apt-get.sh` and `brew.sh` scripts in the config directory install packages using apt and homebrew respectively. The `osx.sh` script is a set of defaults for OS X. `update.sh` is meant to be run periodically to sync commonly updated files in the repo with the home directory.
 
 ## Structure
 

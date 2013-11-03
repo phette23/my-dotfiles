@@ -21,81 +21,32 @@ brew install bash
 # Install wget with IRI support
 brew install wget --enable-iri
 
-# Install RingoJS and Narwhal
-# Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
-# I would never use these... -EJP
-#brew install ringojs
-#brew install narwhal
-
 # Install more recent versions of some OS X tools
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 brew tap josegonzalez/homebrew-php
 brew install php55
 
-# These two formulae didn’t work well last time I tried them:
-#brew install homebrew/dupes/vim
-#brew install homebrew/dupes/screen
-
-# Install other useful binaries
-brew install ack
-#brew install exiv2
-brew install git
-#brew install imagemagick
-brew install lynx
-brew install node
-brew install pigz
-brew install rename
-#brew install rhino
-brew install tree
-brew install webkit2png
-brew install zopfli
-
-brew tap homebrew/versions
-brew install lua52
-
-########################
-# My Homebrew Packages #
-########################
-
-brew install closure-compiler
-brew install drush
-brew install exiftool
-brew install gnupg
-brew install jshon
-brew install optipng
-brew install phantomjs
-brew install pngcrush
-brew install source-highlight
-brew install z
-
-###################
-# End My Packages #
-###################
-
-# Install native apps
-brew tap phinze/homebrew-cask
-brew install brew-cask
-
-function installcask() {
-	brew cask install "${@}" 2> /dev/null
-}
-
-installcask dropbox
-installcask google-chrome
-installcask google-chrome-canary
-#installcask imagealpha
-installcask imageoptim
-installcask iterm2
-#installcask macvim
-#installcask miro-video-converter
-installcask sublime-text
-#installcask the-unarchiver
-installcask tor-browser
-#installcask transmission
-#installcask ukelele
-#installcask virtualbox
-#installcask vlc
+# Install other useful packages
+brew install ack \
+	closure-compiler \
+	drush \
+	exiftool \
+	git \
+	gnupg \
+	imagemagick \
+	jshon \
+	lynx \
+	node \
+	optipng \
+	phantomjs \
+	pngcrush \
+	rbenv \
+	rename \
+	"source-highlight" \
+	tree \
+	webkit2png \
+	z
 
 # Remove outdated versions from the cellar
 brew cleanup

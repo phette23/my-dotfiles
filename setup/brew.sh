@@ -10,36 +10,30 @@ brew update
 # Upgrade any already-installed formulae
 brew upgrade
 
-# Install GNU core utilities (those that come with OS X are outdated)
-brew install coreutils
 echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-brew install findutils
-# Install Bash 4
-brew install bash
 
-# Install wget with IRI support
-brew install wget --enable-iri
-
-# Install more recent versions of some OS X tools
+# tap necessary formulas
 brew tap homebrew/dupes
-brew install homebrew/dupes/grep
 brew tap josegonzalez/homebrew-php
-brew install php55
 
 # Install other useful packages
 brew install ack \
+	bash \
 	closure-compiler \
+	coreutils \
 	drush \
 	exiftool \
+	findutils \
 	git \
 	gnupg \
+	homebrew/dupes/grep \
 	imagemagick \
 	jshon \
 	lynx \
 	node \
 	optipng \
 	phantomjs \
+	php55 \
 	pngcrush \
 	rbenv \
 	rename \
@@ -47,6 +41,9 @@ brew install ack \
 	tree \
 	webkit2png \
 	z
+
+# Install wget with IRI support
+brew install wget --enable-iri
 
 # Remove outdated versions from the cellar
 brew cleanup

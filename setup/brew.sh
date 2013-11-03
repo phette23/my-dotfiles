@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+if [ ! $(command -v brew) ]; then
+  echo "You need to install homebrew first, dummy."
+  exit 1;
+fi
 
 # Make sure we’re using the latest Homebrew
 brew update

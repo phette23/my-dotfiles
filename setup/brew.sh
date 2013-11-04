@@ -37,6 +37,7 @@ brew install ack \
 	pngcrush \
 	rbenv \
 	rename \
+	ruby-build \
 	"source-highlight" \
 	tree \
 	webkit2png \

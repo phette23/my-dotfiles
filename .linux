@@ -11,7 +11,7 @@ alias clip='xclip -sel clip'
 alias ccat='/usr/share/source-highlight/src-hilite-lesspipe.sh'
 
 # source Z from Linux install location
-source /usr/local/etc/z/z.sh
+[ -f /usr/local/etc/z/z.sh ] && source /usr/local/etc/z/z.sh
 
 # make title of terminal tab the current directory's name
 # pwd | sed 's:/:\\

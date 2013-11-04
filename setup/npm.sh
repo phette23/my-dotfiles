@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # install global NPM packages
-npm install -g \
+npm install -g --quiet \
   bower \
   express \
   generator-angular \

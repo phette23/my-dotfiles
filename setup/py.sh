@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
 # setup Python modules
 
-easy_install pip
+sudo easy_install pip
 
-pip install \
+sudo pip install \
   pymarc \
   requests \
   selenium

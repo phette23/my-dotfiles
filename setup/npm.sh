@@ -11,6 +11,7 @@ npm install -g --quiet \
   grunt-init \
   jshint \
   nodemon \
+  phantomas \
   requirejs \
   uglify-js \
   yo

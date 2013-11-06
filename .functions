@@ -240,7 +240,7 @@ function tre() {
 # Top 10 BASH commands used
 # from stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash#answer-68390
 function top10() {
-    history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head -n 11 | tail
+    history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head
 }
 
 # internal functions for use in cheat sheets below

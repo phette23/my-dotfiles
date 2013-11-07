@@ -99,6 +99,9 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
+# Disable smart quotes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
@@ -113,11 +116,6 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCorner
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-
-# Trackpad: swipe between pages with three fingers
-defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 1
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 1
 
 # Disable bluetooth
 defaults write /Library/Preferences/com.apple.Bluetooth.plist ControllerPowerState 0
@@ -435,7 +433,7 @@ sudo mdutil -i on /
 sudo mdutil -E /
 
 ###############################################################################
-# Terminal                                                                    #
+# Terminal & iTerm                                                            #
 ###############################################################################
 
 # Only use UTF-8 in Terminal.app
@@ -444,6 +442,9 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Use the Homebrew theme by default in Terminal.app
 defaults write com.apple.Terminal "Default Window Settings" -string "Homebrew"
 defaults write com.apple.Terminal "Startup Window Settings" -string "Homebrew"
+
+# Don’t display the annoying prompt when quitting iTerm
+ +defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
@@ -473,13 +474,8 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
 ###############################################################################
-# Google Chrome & Google Chrome Canary                                        #
+# Twitter                                                                     #
 ###############################################################################
-
-# Allow installing user scripts via GitHub or Userscripts.org
-defaults write com.google.Chrome ExtensionInstallSources -array "https://*.github.com/*" "http://userscripts.org/*"
-defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://*.github.com/*" "http://userscripts.org/*"
-
 
 # Show the app window when clicking the menu icon
 defaults write com.twitter.twitter-mac MenuItemBehavior -int 1
@@ -527,9 +523,18 @@ a2l -t "Quicksilver"
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Address Book" "Calendar" "Contacts" "Dashboard" "Dock" "Finder" \
-	"Mail" "Safari" "SizeUp" "SystemUIServer" "Terminal" \
-	"Twitter" "iCal" "iTunes" "blued"; do
+for app in "Address Book" \
+  "Calendar" \
+  "Contacts" \
+  "Dock" \
+  "Finder" \
+	"Mail" \
+  "Safari" \
+  "SystemUIServer" \
+  "Terminal" \
+  "iCal" \
+  "iTunes" \
+  "blued"; do
 	killall "$app" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."

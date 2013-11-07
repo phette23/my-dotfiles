@@ -7,6 +7,7 @@ npm install -g --quiet \
   generator-bookmarklet \
   generator-h5bp \
   generator-jekyllrb \
+  generator-reveal \
   grunt-cli \
   grunt-init \
   jshint \

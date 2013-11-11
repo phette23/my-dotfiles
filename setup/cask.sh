@@ -21,6 +21,7 @@ brew cask install \
   google-drive \
   imageoptim \
   inkscape \
+  istumbler \
   iterm2 \
   lastfm \
   menu-meters \

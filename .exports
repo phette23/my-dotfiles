@@ -1,5 +1,9 @@
-# Make Sublime Text the default editor
-export EDITOR="subl"
+# Make Sublime Text the default editor if it exists
+if [ $(command -v subl) ]; then
+	export EDITOR="subl"
+else
+	export EDITOR="vim"
+fi
 
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768

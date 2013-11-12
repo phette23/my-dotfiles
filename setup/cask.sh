@@ -5,6 +5,7 @@ if [ ! $(command -v brew) ]; then
 fi
 
 brew tap phinze/homebrew-cask
+brew tap caskroom/homebrew-versions
 brew install brew-cask
 
 brew cask install \

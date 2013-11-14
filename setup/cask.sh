@@ -13,13 +13,16 @@ brew cask install \
   audacity \
   calibre \
   clamxav \
+  daisydisk \
   dropbox \
   firefox \
   firefox-aurora \
+  gimp \
   github \
   google-chrome \
   google-chrome-canary \
   google-drive \
+  google-music-manager \
   imageoptim \
   inkscape \
   istumbler \

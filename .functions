@@ -321,7 +321,11 @@ function backup() {
         # v = verbose
         # u = if destination file is more recent, keep it
         # z = use compression
-        rsync -avuz --progress --exclude "iTunes/iTunes Music/Podcasts/" --exclude "iTunes/Album Artwork/" ~/Music /Volumes/share/
+        rsync -avuz --progress \
+        	--exclude "iTunes/iTunes Media/Podcasts/" \
+        	--exclude "iTunes/Album Artwork/" \
+        	--exclude "iTunes/iTunes Media/Mobile Applications/" \
+        	~/Music /Volumes/share/
         rsync -avuz --progress ~/Movies/ /Volumes/share/Video/
         rsync -avuz --progress ~/Documents/zzzArc /Volumes/share/
         # b = create backups

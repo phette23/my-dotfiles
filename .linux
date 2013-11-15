@@ -4,6 +4,9 @@ alias update='sudo gem update; sudo apt-get update -qq; sudo apt-get upgrade -y;
 # Linux version of emptytrash
 alias emptytrash='rm -rf ~/.local/share/Trash/files/*'
 
+# Searching for packages is too verbose
+alias aptfind='apt-cache search'
+
 # for piping text to clipboard, requires xclip
 alias clip='xclip -sel clip'
 

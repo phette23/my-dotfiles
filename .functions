@@ -304,11 +304,6 @@ function gcheat() {
     echo
 }
 
-# Open series of work URLs
-function work() {
-    open 'https://libanswers.com/login.php?iid=723&iid=723' 'https://drive.google.com/#activity' 'https://www.rememberthemilk.com/home/phette23/'
-}
-
 # sass --watch syntax is too verbose
 function sw() {
     sass --watch $1:$2 --style compressed

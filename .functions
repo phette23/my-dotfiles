@@ -231,9 +231,9 @@ function o() {
 	fi
 
   if [ $# -eq 0 ]; then
-    open .
+    $opencmd .
   else
-    open "$@"
+    $opencmd "$@"
   fi
 }
 

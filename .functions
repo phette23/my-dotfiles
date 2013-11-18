@@ -222,6 +222,14 @@ function v() {
 # `o` with no arguments opens current directory, otherwise opens the given
 # location
 function o() {
+  # must test for xdg-open, because "open" exists on both
+  # but is useless on Linux
+	if [ $(type -P xdg-open) ]; then
+		local opencmd="xdg-open"
+	else
+		local opencmd="open"
+	fi
+
   if [ $# -eq 0 ]; then
     open .
   else

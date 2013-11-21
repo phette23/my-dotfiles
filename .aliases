@@ -10,6 +10,7 @@ alias -- -="cd -"
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias g="git"
+alias cx="chmod +x"
 
 # Git Shortcuts
 alias gs="git status -sb"

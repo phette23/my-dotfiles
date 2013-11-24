@@ -23,6 +23,7 @@ brew cask install \
   google-chrome-canary \
   google-drive \
   google-music-manager \
+  google-refine \
   imageoptim \
   inkscape \
   istumbler \

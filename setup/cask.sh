@@ -23,13 +23,13 @@ brew cask install \
   google-chrome-canary \
   google-drive \
   google-music-manager \
-  google-refine \
   imageoptim \
   inkscape \
   istumbler \
   iterm2 \
   lastfm \
   menu-meters \
+  openrefine \
   pandoc \
   prey \
   quicksilver \

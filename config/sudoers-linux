@@ -1,8 +1,7 @@
-# Let's me run basic install/update commands
-# without typin g my password
+# Run install/update commands without typing my password
 # Copy this to /etc/sudoers.d/
-# Reference: http://ubuntuforums.org/showthread.php?t=1132821
-# H/t @cowboy https://github.com/cowboy/dotfiles/
+# Reference: ubuntuforums.org/showthread.php?t=1132821
+# H/t @cowboy github.com/cowboy/dotfiles/
 
 # Host alias
 Host_Alias LAN = 192.168.1.0/255.255.255.0

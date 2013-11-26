@@ -7,7 +7,7 @@
 Host_Alias LAN = 192.168.1.0/255.255.255.0
 
 # Command aliases.
-Cmnd_Alias UPDATE = /usr/sbin/software-update
+Cmnd_Alias UPDATE = /usr/sbin/softwareupdate
 Cmnd_Alias MYPROGS = UPDATE
 
 # User privilege specification

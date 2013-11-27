@@ -29,6 +29,7 @@ brew cask install \
   iterm2 \
   lastfm \
   menu-meters \
+  openrefine \
   pandoc \
   prey \
   quicksilver \

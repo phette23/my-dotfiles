@@ -17,11 +17,8 @@ alias ccat='/usr/share/source-highlight/src-hilite-lesspipe.sh'
 [ -f /usr/local/etc/z/z.sh ] && source /usr/local/etc/z/z.sh
 
 # make title of terminal tab the current directory's name
-# pwd | sed 's:/:\\
-# :g' | tail -n 1
-# => pwd, sed replace / for literal newline, tail take last line
-export PS1="\[\e]0;\$(pwd | sed 's:/:\\
-:g' | tail -n 1)\a\]$PS1"
+# pwd, tr replace / for newline, tail take last line
+export PS1="\[\e]0;\$(pwd | tr '/' '\n' | tail -n1)\a\]$PS1"
 
 # disable trackpad while typing in Openbox window manager
 [ $DESKTOP_SESSION == "openbox" ] && synclient MaxTapTime=0

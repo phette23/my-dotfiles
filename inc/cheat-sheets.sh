@@ -73,7 +73,7 @@ function scheat() {
     chcolor '⌘ KU' '\t-> upper case'
     chcolor '⌘ KL' '\t-> lower case'
     chcolor '⌘ ⌥ /' '\t-> block comment'
-    chcolor '⌘ ⇧ V' '\t-> past and ident'
+    chcolor '⌘ ⇧ V' '\t-> paste & indent'
     chcolor '⌃ space' '\t-> autocomplete (repeat to select next suggestion)'
     chcolor '⌃ M' '\t-> jump to matching brackets'
     chcolor '⌘ U' '\t-> soft undo (movement undo)'

@@ -152,6 +152,7 @@ function backup() {
         # z = use compression
         rsync -avuz --progress \
         	--exclude "iTunes/iTunes Music/Podcasts/" \
+          --exclude "iTunes/iTunes Media/Podcasts/" \
         	--exclude "iTunes/Album Artwork/" \
         	--exclude "iTunes/iTunes Media/Mobile Applications/" \
         	~/Music /Volumes/share/

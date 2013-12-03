@@ -53,3 +53,33 @@ function gcheat() {
     chcolor 'g push origin $BRANCH' "\t-> push BRANCH to GitHub (remote)"
     echo
 }
+
+function scheat() {
+    chtitle "sublime text shortcuts"
+    # taken from gist.github.com//lucasfais/1207002
+    chcolor '⌘ T' '\t-> go to file'
+    chcolor '⌘ ⌃ P' '\t-> go to project'
+    chcolor '⌘ R' '\t-> go to methods'
+    chcolor '⌃ G' '\t-> go to line'
+    chcolor '⌘ KB' '\t-> toggle side bar'
+    chcolor '⌃ ⇧ M' '\t-> select content into brackets'
+    chcolor '⌘ ⇧ ↩' '\t-> insert line before'
+    chcolor '⌘ ↩' '\t-> insert line after'
+    chcolor '⌃ ⇧ K' '\t-> delete line'
+    chcolor '⌘ KK' '\t-> delete from cursor to end of line'
+    chcolor '⌘ K ⌫' '\t-> delete from cursor to start of line'
+    chcolor '⌘ ⇧ D' '\t-> duplicate line(s)'
+    chcolor '⌘ J' '\t-> join lines'
+    chcolor '⌘ KU' '\t-> upper case'
+    chcolor '⌘ KL' '\t-> lower case'
+    chcolor '⌘ ⌥ /' '\t-> block comment'
+    chcolor '⌘ ⇧ V' '\t-> past and ident'
+    chcolor '⌃ space' '\t-> autocomplete (repeat to select next suggestion)'
+    chcolor '⌃ M' '\t-> jump to matching brackets'
+    chcolor '⌘ U' '\t-> soft undo (movement undo)'
+    chcolor '⌘ ⇧ U' '\t-> soft redo (movement redo)'
+    chcolor '⌘ ⌥ .' '\t-> close XML/HTML tag'
+    chcolor '⌘ ⇧ F' '\t-> find in files'
+    chcolor '⌘ ⌥ N' '\t-> N columns (use 1 to return to single)'
+    chcolor '⌘ ⌥ 5' '\t-> grid (4 groups)'
+}

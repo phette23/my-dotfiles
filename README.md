@@ -2,18 +2,20 @@
 
 This started off as a fork of Mathias Bynen's [excellent OS X dotfiles](https://github.com/mathiasbynens/dotfiles), but I need to break it off into a separate project because I want a set of cross-platform dotfiles I can use on both Mac and Linux machines. I'm probably going to keep an eye on the original repository for useful commits, but it's mostly going to branch off. Making a separate project also gives me more control over how the files are organized, as there's a lot in the original I don't use or that's growing too long.
 
-I'm keeping the MIT license as that's what the original repo was under.
+I kept the MIT license as that's what the original was under.
 
 ## To Use
 
-You can clone the whole project and run `bootstrap.sh` to get started. For a fresh install, the `apt-get.sh` and `brew.sh` scripts in the config directory install packages using apt and homebrew respectively. The `osx.sh` script is a set of defaults for OS X. `update.sh` is meant to be run periodically to sync commonly updated files in the repo with the home directory.
+You can clone the project and run `bootstrap.sh` to get started. `update.sh` is a subset of `bootstrap.sh` which syncs only the inc directory with the home folder; it's useful because the files in inc tend to be the most frequently edited ones.
+
+For a fresh OS install, the `apt-get.sh` and `brew.sh` scripts in the config directory install packages using apt and homebrew respectively. `cask.sh` will install Mac apps using [homebrew cask](https://github.com/phinze/homebrew-cask). The `osx.sh` script is a set of defaults for OS X.
 
 ## Structure
 
-Everything is sourced through .bash\_profile. .bashrc just sources .bash\_profile. The filenames explain what's in a given file (e.g. .aliases has, surprise, aliases).
+Everything is sourced through `.bash\_profile`; `.bashrc` just sources `.bash\_profile`. The filenames explain what's in a given file (e.g. `aliases.sh` has, surprise, aliases).
 
-One-time setup scripts meant to be run on a brand new system reside in "setup."
+The files which `.bash\_profile` includes are in the *inc* folder of this project. To keep file sizes down, some of these files are sourced indirectly through other inc files, rather than directly via `.bash_profile`. For instance, `functions.sh` sources a series of "cheat sheet" reminder functions in `cheat-sheet.sh`.
 
-Global configuration files reside in the "config" folders. If you're looking for a file which ends in "rc" it's probably in here (other than .bashrc).
+One-time setup scripts meant to be run on a brand new OS reside in *setup*.
 
-Shell customizations are in the root of the project, so that's where functions, aliases, and Bash settings will be.
+Global configuration files reside in the *config* folders. If you're looking for a file which ends in "rc" it's probably in here (other than `.bashrc`).

@@ -168,4 +168,4 @@ function backup() {
     fi
 }
 
-source cheat-sheets.sh
+source ~/.inc/cheat-sheets.sh

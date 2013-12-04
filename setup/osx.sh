@@ -537,4 +537,5 @@ for app in "Address Book" \
   "blued"; do
 	killall "$app" > /dev/null 2>&1
 done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+echo "Done! Some changes require a logout/restart to take effect."
+echo "Also, don't forget to add '%admin ALL=(ALL) NOPASSWD: /usr/sbin/softwareupdate' to /etc/sudoers so you don't have to type your password when running the update alias."

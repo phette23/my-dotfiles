@@ -82,4 +82,5 @@ function scheat() {
     chcolor '⌘ ⇧ F' '\t-> find in files'
     chcolor '⌘ ⌥ N' '\t-> N columns (use 1 to return to single)'
     chcolor '⌘ ⌥ 5' '\t-> grid (4 groups)'
+    chcolor 'fn F5' '\t-> order CSS properties alphabetically'
 }

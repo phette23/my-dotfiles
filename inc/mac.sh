@@ -32,7 +32,7 @@ alias catac='/Applications/cataclysm/cataclysm-launcher'
 alias ccat='src-hilite-lesspipe.sh'
 
 # Update OS X software, Ruby gems, Homebrew, global NPM packages
-alias update='sudo softwareupdate -i -a; gem update; brew update; brew upgrade; npm update npm -g; npm update -g;'
+alias update='sudo softwareupdate -i -a; gem update --system; gem update; brew update; brew upgrade; npm update npm -g; npm update -g;'
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed

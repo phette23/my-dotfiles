@@ -149,14 +149,15 @@ function backup() {
         # a = archive mode, makes recursive & a host of other options
         # v = verbose
         # u = if destination file is more recent, keep it
+        # h = human-readable sizes, e.g. kb, gb
         # z = use compression
         # use separate excludes file
-        rsync -avuz --progress --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music /Volumes/share/
-        rsync -avuz --progress ~/Movies/ /Volumes/share/Video/
-        rsync -avuz --progress ~/Documents/zzzArc /Volumes/share/
+        rsync -avuzh --progress --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music /Volumes/share/
+        rsync -avuzh --progress ~/Movies/ /Volumes/share/Video/
+        rsync -avuzh --progress ~/Documents/zzzArc /Volumes/share/
         # b = create backups
-        rsync -avuzb --progress ~/Documents/OvalII.sparsebundle /Volumes/share/OvalII.sparsebundle
-        rsync -avuzb --progress ~/Documents/nsn.dmg /Volumes/share/nsn.dmg
+        rsync -avuzhb --progress ~/Documents/OvalII.sparsebundle /Volumes/share/OvalII.sparsebundle
+        rsync -avuzhb --progress ~/Documents/nsn.dmg /Volumes/share/nsn.dmg
         # run Spideroak backups w/o the GUI
         /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode
     else

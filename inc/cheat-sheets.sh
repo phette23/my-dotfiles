@@ -51,6 +51,7 @@ function gcheat() {
     chcolor 'g reset $HASH' "\t\t-> revert to commit HASH but keep changes in working dir\n\t\t\tadd --hard flag to erase changes"
     chcolor 'g checkout -- <file>' "\t-> unstage changes to <file>"
     chcolor 'g push origin $BRANCH' "\t-> push BRANCH to GitHub (remote)"
+    chcolor 'g log -p' "\t\t-> see diffs of changed files in log"
     echo
 }
 

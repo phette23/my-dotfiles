@@ -1,9 +1,6 @@
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
 
-# add Scripted app to path
-export PATH="/Applications/Scripted/bin:$PATH"
-
 # Check if brew is defined, run Homebrew-specific commands
 if command -v "brew" &> /dev/null 2>&1; then
     # Git Bash Completion for Homebrew package
@@ -25,9 +22,6 @@ fi
 
 # Aliases
 
-# Cataclysm
-alias catac='/Applications/cataclysm/cataclysm-launcher'
-
 # Source-Highlight (requires Homebrew package)
 alias ccat='src-hilite-lesspipe.sh'
 
@@ -41,10 +35,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
 alias plistbuddy="/usr/libexec/PlistBuddy"

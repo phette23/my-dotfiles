@@ -14,7 +14,7 @@ function cheatmoar() {
     chcolor 'Quick Copy' "\t-> cp /home/foo/realllylongname.cpp{,-old}\n\t\tExpands to:\n\t\tcp /home/foo/realllylongname.cpp /home/foo/realllylongname.cpp-old"
     chcolor '^str^str2' "\t-> replaces str in the last cmd with str2 & executes it"
     echo -en "$ORANGE"; echo -en '! tricks '; echo -en "$RESET\t-> the "; echo -e '!$, !^ & !* expandos return, from the most recent line:\n\t\tthe last item, first argument item, & all arguments'
-    echo -en "$ORANGE"; echo -en 'cmd !!:$N '; echo -e "$RESET\t-> run cmd with the previous ones' arguments\n\t\tuses Nth arg, or 1st ($), or last (^), or range (e.g. $-3)"
+    echo -en "$ORANGE"; echo -en 'cmd !!:$N '; echo -e "$RESET\t-> run cmd with the previous ones' arguments\n\t\tuses Nth arg, or 1st ($), or last (^), or range (e.g. \$-3)"
     chcolor 'ESC .' "\t\t-> insert last arguments from last cmd"
     chcolor 'Alt-$N, Alt-Ctrl-Y' " -> insert Nth argument from last cmd"
     chcolor '\cmd' "\t\t-> do not use the alias for 'cmd'"

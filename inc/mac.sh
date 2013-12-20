@@ -14,9 +14,10 @@ if command -v "brew" &> /dev/null 2>&1; then
     source $(brew --prefix)/Library/Contributions/brew_bash_completion.sh
 fi
 
-# Show current directory (not full path only top-level)
-# in iTerm tab name
-if [ $ITERM_SESSION_ID ]; then
+# Show current dir name (not full path) in iTerm tab title
+# but only if PROMPT_COMMAND doesn't already do so
+# prevents login-shell-with-a-login-shell problems (e.g. tmux)
+if [ $ITERM_SESSION_ID ] && [ ! "$(echo $PROMPT_COMMAND | egrep 'echo -ne "\\033\];')" ]; then
   export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
 fi
 

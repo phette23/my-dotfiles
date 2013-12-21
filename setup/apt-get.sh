@@ -14,7 +14,7 @@ sudo apt-get -y install \
 	clang \
 	cowsay \
 	curl \
-  denyhosts \
+  	denyhosts \
 	epiphany-browser \
 	fonts-droid \
 	fonts-inconsolata \
@@ -27,12 +27,11 @@ sudo apt-get -y install \
 	gnome-dictionary \
 	inkscape \
 	lynx \
-	maximus \
 	midori \
 	mongodb \
 	mysql-server \
 	ngrep \
-  openssh-server \
+  	openssh-server \
 	optipng \
 	pandoc \
 	phantomjs \
@@ -44,7 +43,6 @@ sudo apt-get -y install \
 	ruby1.9.1 \
 	scribus \
 	source-highlight \
-	synapse \
 	synaptic \
 	terminator \
 	texlive-fonts-recommended \
@@ -54,7 +52,7 @@ sudo apt-get -y install \
 	vim \
 	wine \
 	xclip \
-  xinetd \
+  	xinetd \
 	yaz
 
 # Done! Dropbox is the only major item not in apt-get

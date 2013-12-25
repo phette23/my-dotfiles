@@ -11,6 +11,7 @@ alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias g="git"
 alias cx="chmod +x"
+alias pgl='pgrep -lf'
 
 # Git Shortcuts
 alias gs="git status -sb"

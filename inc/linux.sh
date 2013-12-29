@@ -13,6 +13,10 @@ alias clip='xclip -sel clip'
 # Source-Highlight, requires the package in apt
 alias ccat='/usr/share/source-highlight/src-hilite-lesspipe.sh'
 
+# IP addresses
+alias extip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
 # source Z from Linux install location
 [ -f /usr/local/etc/z/z.sh ] && source /usr/local/etc/z/z.sh
 

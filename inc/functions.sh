@@ -52,15 +52,6 @@ function dataurl() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
 
-# Create a git.io short URL
-function gitio() {
-	if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: \`gitio slug url\`"
-		return 1
-	fi
-	curl -i http://git.io/ -F "url=${2}" -F "code=${1}"
-}
-
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
 	local port="${1:-8000}"
@@ -111,17 +102,17 @@ function v() {
 function o() {
   # must test for xdg-open, because "open" exists on both
   # but is useless on Linux
-	if [ $(type -P xdg-open) ]; then
-		local opencmd="xdg-open"
-	else
-		local opencmd="open"
-	fi
+    if [ $(type -P xdg-open) ]; then
+    	local opencmd="xdg-open"
+    else
+    	local opencmd="open"
+    fi
 
-  if [ $# -eq 0 ]; then
+    if [ $# -eq 0 ]; then
     $opencmd .
-  else
+    else
     $opencmd "$@"
-  fi
+    fi
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
@@ -129,18 +120,13 @@ function o() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-        tree -aC -I '.git|node_modules|bower_components|.sass-cache' --dirsfirst "$@" | less -FRNX
+    tree -aC -I '.git|node_modules|bower_components|.sass-cache' --dirsfirst "$@" | less -FRNX
 }
 
 # Top 10 BASH commands used
 # from stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash#answer-68390
 function top10() {
     history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head
-}
-
-# sass --watch syntax is too verbose
-function sw() {
-    sass --watch $1:$2 --style compressed
 }
 
 function backup() {

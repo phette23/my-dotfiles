@@ -5,15 +5,15 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~"
 alias -- -="cd -"
-
-# Shortcuts
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
-alias g="git"
+
+# Misc common commands
 alias cx="chmod +x"
 alias pgl='pgrep -lf'
 
 # Git Shortcuts
+alias g="git"
 alias gs="git status -sb"
 alias gc="git commit -am"
 alias gd="git diff"
@@ -22,9 +22,7 @@ alias gd="git diff"
 # list only top-level global packages
 alias npmg="npm ls -g --depth=0 2>/dev/null"
 
-# Default for pngcrush
-alias png='pngcrush -reduce -brute'
-
+# ls aliases
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -34,13 +32,10 @@ fi
 
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
-
 # List all files colorized in long format, including dot files
 alias la="ls -laF ${colorflag}"
-
 # List all files colorized in short format
 alias lsa="ls -a ${colorflag}"
-
 # List only directories
 alias lsd='ls -lF ${colorflag} | grep "^d"'
 
@@ -99,7 +94,3 @@ done
 
 # Make Grunt print stack traces by default
 command -v grunt > /dev/null && alias grunt="grunt --stack"
-
-# Kill all the tabs in Chrome to free up memory
-# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"

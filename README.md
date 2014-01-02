@@ -19,3 +19,5 @@ The files which `.bash_profile` includes are in the *inc* folder of this project
 One-time setup scripts meant to be run on a brand new OS reside in *setup*.
 
 Global configuration files reside in the *config* folders. If you're looking for a file which ends in "rc" it's probably in here (other than `.bashrc`).
+
+[![Analytics](https://ga-beacon.appspot.com/UA-29080462-2/my-dotfiles/readme?pixel)](https://github.com/igrigorik/ga-beacon)

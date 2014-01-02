@@ -1,6 +1,3 @@
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH"
-
 # load all the other shell customizations
 for file in ~/.inc/{path,bash_prompt,exports,aliases,functions,extra}.sh; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"

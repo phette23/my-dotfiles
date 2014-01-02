@@ -4,6 +4,7 @@
 sudo easy_install pip
 
 sudo pip install \
+  flake8 \
   pymarc \
   requests \
   selenium

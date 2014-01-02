@@ -4,4 +4,5 @@ gem install \
 	compass \
 	jekyll \
 	sass \
+    scss-lint \
 	showterm

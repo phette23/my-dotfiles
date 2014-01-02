@@ -9,7 +9,6 @@ npm install -g --quiet \
   generator-jekyllrb \
   generator-reveal \
   grunt-cli \
-  grunt-init \
   jshint \
   nodemon \
   phantomas \

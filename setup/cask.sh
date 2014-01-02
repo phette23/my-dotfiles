@@ -36,7 +36,7 @@ brew cask install \
   scribus \
   sublime-text-3 \
   tor-browser \
-  zotero \
+  zotero
 
 # link Sublime Text CLI
 ln -s "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "/usr/local/bin/"

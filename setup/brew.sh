@@ -20,7 +20,6 @@ brew tap josegonzalez/homebrew-php
 brew install ack \
 	bash \
 	chromedriver \
-	closure-compiler \
 	coreutils \
 	drush \
 	exiftool \
@@ -31,13 +30,13 @@ brew install ack \
 	imagemagick \
 	jshon \
 	lynx \
+	ngrep \
 	node \
 	optipng \
 	phantomjs \
 	php55 \
 	pngcrush \
 	rbenv \
-	rename \
 	ruby-build \
 	"source-highlight" \
 	tree \

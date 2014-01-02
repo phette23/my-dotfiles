@@ -20,9 +20,13 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 # source Z from Linux install location
 [ -f /usr/local/etc/z/z.sh ] && source /usr/local/etc/z/z.sh
 
-# make title of terminal tab the current directory's name
-# pwd, tr replace / for newline, tail take last line
-export PS1="\[\e]0;\$(pwd | tr '/' '\n' | tail -n1)\a\]$PS1"
+# if we're in an SSH session, say so & which hostname
+# else make title of terminal tab the current dir's name
+if [ -n "$SSH_CLIENT" ]; then
+    export PS1="\[\e]0;ssh on ${HOSTNAME}\a\]$PS1"
+else
+    export PS1="\[\e]0;\$(pwd | tr '/' '\n' | tail -n1)\a\]$PS1"
+fi
 
 # disable trackpad while typing in Openbox window manager
 [[ ${DESKTOP_SESSION} == "openbox" ]] && synclient MaxTapTime=0

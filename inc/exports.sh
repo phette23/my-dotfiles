@@ -1,3 +1,7 @@
+# All export statements
+# except PATH, which is in path.sh
+# because it needs to run first
+
 # Make Sublime Text the default editor if it exists
 if [ $(command -v subl) ]; then
 	export EDITOR="subl"

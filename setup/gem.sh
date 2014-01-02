@@ -5,4 +5,5 @@ gem install \
 	jekyll \
 	sass \
     scss-lint \
-	showterm
+	showterm \
+    sinatra

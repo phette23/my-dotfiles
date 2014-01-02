@@ -1,5 +1,5 @@
 # load all the other shell customizations
-for file in ~/.inc/{path,bash_prompt,exports,aliases,functions,extra}.sh; do
+for file in ~/.inc/{path,bash_prompt,completion,exports,aliases,functions,extra}.sh; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -23,12 +23,6 @@ shopt -s cdspell
 for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null
 done
-
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
-
-# If possible, add tab completion for many more commands
-[ -f /etc/bash_completion ] && source /etc/bash_completion
 
 # load Node Version Manager
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh && nvm use default > /dev/null

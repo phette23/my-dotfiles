@@ -3,15 +3,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # Check if brew is defined, run Homebrew-specific commands
 if command -v "brew" &> /dev/null 2>&1; then
-    # Git Bash Completion for Homebrew package
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-
     # Z from Homebrew
     source `brew --prefix`/etc/profile.d/z.sh
-
-    # BASH completion for Homebrew
-    # See: github.com/mxcl/homebrew/wiki/Tips-N%27-Tricks
-    source $(brew --prefix)/Library/Contributions/brew_bash_completion.sh
 fi
 
 # Show current dir name (not full path) in iTerm tab title

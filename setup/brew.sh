@@ -19,6 +19,7 @@ brew tap josegonzalez/homebrew-php
 # Install other useful packages
 brew install ack \
 	bash \
+	bash-completion \
 	chromedriver \
 	coreutils \
 	drush \

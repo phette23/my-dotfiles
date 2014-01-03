@@ -10,3 +10,7 @@ if command -v "npm" &> /dev/null 2>&1; then
         # See npm -l for command usage
         source <(npm completion)
 fi
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    source $(brew --prefix)/etc/bash_completion
+fi

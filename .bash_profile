@@ -1,5 +1,5 @@
 # load all the other shell customizations
-for file in ~/.inc/{path,bash_prompt,completion,exports,aliases,functions,extra}.sh; do
+for file in ~/.inc/{path,bash_prompt,completion,exports,aliases,functions}.sh; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -26,3 +26,8 @@ done
 
 # load Node Version Manager
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh && nvm use default > /dev/null
+
+# initialize rbenv
+if command -v "rbenv" &> /dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi

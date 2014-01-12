@@ -11,6 +11,8 @@ if command -v "npm" &> /dev/null 2>&1; then
         source <(npm completion)
 fi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    source $(brew --prefix)/etc/bash_completion
+if command -v "brew" &> /dev/null 2>&1; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        source $(brew --prefix)/etc/bash_completion
+    fi
 fi

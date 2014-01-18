@@ -35,6 +35,7 @@ function cheat() {
     chcolor 'gi' "\t\t-> install Grunt plugin, e.g. 'gi contrib-uglify'"
     chcolor 'gurl' "\t\t-> Gzip-enabled curl"
     chcolor 'lsof -i' "\t\t-> View programs with open ports & connections"
+    chcolor 'mdfind' "\t\t-> Search Spotlight index"
     chcolor 'oo' "\t\t-> open current directory"
     chcolor 'spot(off|on)' "\t-> turn Spotlight off & on"
     chcolor 'tar -zxvf $FILE' "\t-> unzip tar ball"

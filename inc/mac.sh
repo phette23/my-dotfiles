@@ -85,3 +85,8 @@ tell application "Notes"
 end tell
 EOF
 }
+
+# Convert man page to PDF & open it
+pdfman() {
+    man -t "$*" | open -f -a /Applications/Preview.app
+}

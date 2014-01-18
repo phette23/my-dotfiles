@@ -1,14 +1,14 @@
 # internal functions for use in cheat sheets below
-function chcolor() {
+chcolor () {
     echo -n "$ORANGE$1$RESET"
     echo -e "$2"
 }
-function chtitle() {
+chtitle () {
     echo -e "$PURPLE\t\t$1\n$RESET"
 }
 
 # Misc tips from above link
-function cheatmoar() {
+cheatmoar () {
     chtitle "more bash tricks"
     chcolor '^+R' "\t\t-> reverse search through history"
     chcolor 'Quick Copy' "\t-> cp /home/foo/realllylongname.cpp{,-old}\n\t\tExpands to:\n\t\tcp /home/foo/realllylongname.cpp /home/foo/realllylongname.cpp-old"
@@ -23,7 +23,7 @@ function cheatmoar() {
 }
 
 # Print cheat sheet of dotfiles functions/aliases
-function cheat() {
+cheat () {
     chtitle "bash cheatsheet"
     chcolor 'c' "\t\t-> trim new lines & copy to clipboard"
     chcolor '^+A' "\t\t-> jump to beginning of line"
@@ -43,7 +43,7 @@ function cheat() {
     echo
 }
 
-function gcheat() {
+gcheat () {
     # template: echo -e "$ORANGE cmd \t\t\t$RESET— description"
     chtitle "git cheatsheet"
     chcolor 'g d' "\t\t\t-> diff between latest commit & current state"
@@ -56,7 +56,7 @@ function gcheat() {
     echo
 }
 
-function scheat() {
+scheat () {
     chtitle "sublime text shortcuts"
     # taken from gist.github.com//lucasfais/1207002
     chcolor '⌘ T' '\t-> go to file'

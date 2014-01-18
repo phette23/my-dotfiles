@@ -47,7 +47,7 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 
 # Add reminder to Reminders.app (OS X 10.8)
 # Usage: `remind 'foo'` or `echo 'foo' | remind`
-function remind() {
+remind () {
   local text
   if [ -t 0 ]; then
     text="$1" # argument
@@ -66,7 +66,7 @@ EOF
 # Add note to Notes.app (OS X 10.8)
 # Usage: `note 'title' 'body'` or `echo 'body' | note`
 # Title is optional
-function note() {
+note () {
   local title
   local body
   if [ -t 0 ]; then
@@ -87,6 +87,6 @@ EOF
 }
 
 # Convert man page to PDF & open it
-pdfman() {
+pdfman () {
     man -t "$*" | open -f -a /Applications/Preview.app
 }

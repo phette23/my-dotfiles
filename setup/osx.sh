@@ -496,7 +496,7 @@ defaults write com.twitter.twitter-mac HideInBackground -bool true
 # Login Items                                                                 #
 ###############################################################################
 
-function a2l () {
+a2l () {
 	if [ $1 == "-f" ]; then
 		local hide="<false/>"
 	elif [ $1 == "-t" ]; then
@@ -518,6 +518,7 @@ a2l -f "iTerm"
 a2l -t "Quicksilver"
 # Google Drive & Dropbox will prompt you to open on startup the first time
 # you open them, but they're good candidates here, too
+unset a2l
 
 ###############################################################################
 # Kill affected applications                                                  #

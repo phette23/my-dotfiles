@@ -121,9 +121,11 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 defaults write /Library/Preferences/com.apple.Bluetooth.plist ControllerPowerState 0
 launchctl unload /System/Library/LaunchDaemons/com.apple.blued.plist
 launchctl unload -w /System/Library/LaunchAgents/com.apple.bluetoothUIServer.plist
-chmod ug-s /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent
-rm -rf /System/Library/Extensions/IOBluetoothFamily.kext
-rm -rf /System/Library/Extensions/IOBluetoothHIDDriver.kext
+sudo chmod ug-s /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent
+sudo rm -rf /System/Library/Extensions/IOBluetoothFamily.kext
+sudo rm -rf /System/Library/Extensions/IOBluetoothHIDDriver.kext
+# Au Revoir, Bonjour
+defaults write /System/Library/LaunchDaemons/com.apple.mDNSResponder ProgramArguments -array-add "-NoMulticastAdvertisements"
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)

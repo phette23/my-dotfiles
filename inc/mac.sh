@@ -16,6 +16,12 @@ fi
 
 # OS X Aliases
 
+# use iTerm-Tmux integration if we're in iTerm
+# see: https://code.google.com/p/iterm2/wiki/TmuxIntegration
+if [ $ITERM_SESSION_ID ]; then
+    alias tm='tmux -CC'
+fi
+
 # JavaScriptCore REPL
 jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
 [ -e "${jscbin}" ] && alias jsc="${jscbin}"

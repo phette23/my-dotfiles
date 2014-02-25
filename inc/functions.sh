@@ -145,7 +145,10 @@ backup () {
         rsync -avuzhb --progress ~/Documents/OvalII.sparsebundle /Volumes/share/OvalII.sparsebundle
         rsync -avuzhb --progress ~/Documents/nsn.dmg /Volumes/share/nsn.dmg
         # run Spideroak backups w/o the GUI
-        /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode
+        # & backup ~/Documents to Google Drive concurrently
+        /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode & \
+            zip -rq documents.zip ~/Documents \
+            && mv documents.zip ~/Google\ Drive/
     else
         echo "Connect to backup drive first."
     fi

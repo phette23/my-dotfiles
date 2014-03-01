@@ -148,7 +148,7 @@ backup () {
         # & backup ~/Documents to Google Drive concurrently
         /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode & \
             zip -rq documents.zip ~/Documents \
-            && mv documents.zip ~/Google\ Drive/
+            && mv documents.zip ~/Google\ Drive/backups/
     else
         echo "Connect to backup drive first."
     fi

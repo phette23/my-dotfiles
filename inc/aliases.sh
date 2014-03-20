@@ -14,9 +14,6 @@ alias pgl='pgrep -lf'
 
 # Git Shortcuts
 alias g="git"
-alias gs="git status -sb"
-alias gc="git commit -am"
-alias gd="git diff"
 
 # Node shortcuts
 # list only top-level global packages

@@ -1,3 +1,8 @@
+" My tweaks
+" Quicker way of exiting insert mode
+inoremap jj <ESC>
+" End my tweaks
+
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)

@@ -7,7 +7,7 @@ doIt () {
     	--exclude "setup/" \
     	--exclude ".DS_Store" \
     	--exclude "bootstrap.sh" \
-		--exclude "README.md" \
+	--exclude "README.md" \
     	--exclude "LICENSE-MIT.txt" \
     	--exclude "update.sh" \
     	--exclude="dotfiles.sublime-*" \

@@ -11,12 +11,9 @@ alias dl="cd ~/Downloads"
 # Misc common commands
 alias cx="chmod +x"
 alias pgl='pgrep -lf'
-
-# Git Shortcuts
 alias g="git"
-
-# Node shortcuts
-# list only top-level global packages
+# list only global NPM packages
+# broken currently, see https://github.com/npm/npm/pull/4179
 alias npmg="npm ls -g --depth=0 2>/dev/null"
 
 # ls aliases

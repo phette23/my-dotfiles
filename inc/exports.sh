@@ -2,12 +2,7 @@
 # except PATH, which is in path.sh
 # because it needs to run first
 
-# Make Sublime Text the default editor if it exists
-if [ $(command -v subl) ]; then
-	export EDITOR="subl"
-else
-	export EDITOR="vim"
-fi
+export EDITOR="vim"
 
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768

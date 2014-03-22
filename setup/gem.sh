@@ -4,6 +4,6 @@ gem install \
 	compass \
 	jekyll \
 	sass \
-    scss-lint \
+    	scss-lint \
 	showterm \
-    sinatra
+    	sinatra

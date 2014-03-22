@@ -5,8 +5,7 @@
 # but when I do, I run ./update.sh git
 
 if [ "$1" = "git" ]; then
-    cp config/.gitconfig ~/.gitconfig
-    cp config/.gitattributes ~/.gitattributes
+    rsync -rtv config/.{gitconfig,gitattributes,hgignore} ~
     # if you've forked this repo, PLEASE update this to your details
     # I don't want to take credit for your commits
     git config --global user.name "phette23"

@@ -2,7 +2,6 @@
 
 # based on http://mths.be/osx
 # also adopts portions of cowboy/dotfiles/init/10_osx.sh
-# see github.com/cowboy/dotfiles/
 
 # exit if not OS X
 [[ $(uname) == 'Darwin' ]] || exit 1
@@ -20,7 +19,7 @@ fi
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
   echo "Installing Homebrew"
-  true | ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+  true | ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
 
 if [[ "$(type -P brew)" ]]; then

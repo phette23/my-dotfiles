@@ -12,12 +12,9 @@ For a fresh OS install, the `apt-get.sh` and `brew.sh` scripts in the config dir
 
 ## Structure
 
-Everything is sourced through `.bash_profile`; `.bashrc` just sources `.bash_profile`. The filenames explain what's in a given file (e.g. `aliases.sh` has, surprise, aliases).
+Everything is sourced through `.bash_profile`. The files which `.bash_profile` includes are in the **inc** folder of this project. To keep file sizes down, some of these files are sourced indirectly through other inc files, rather than directly via `.bash_profile`. For instance, `functions.sh` sources a series of "cheat sheet" reminder functions in `cheat-sheet.sh`.
 
-The files which `.bash_profile` includes are in the *inc* folder of this project. To keep file sizes down, some of these files are sourced indirectly through other inc files, rather than directly via `.bash_profile`. For instance, `functions.sh` sources a series of "cheat sheet" reminder functions in `cheat-sheet.sh`.
+One-time setup scripts meant to be run on a brand new OS reside in **setup**.
 
-One-time setup scripts meant to be run on a brand new OS reside in *setup*.
+Global configuration files reside in the **config** folders. If you're looking for a file which ends in "rc" it's probably in here (other than `.bashrc`).
 
-Global configuration files reside in the *config* folders. If you're looking for a file which ends in "rc" it's probably in here (other than `.bashrc`).
-
-[![Analytics](https://ga-beacon.appspot.com/UA-29080462-2/my-dotfiles/readme?pixel)](https://github.com/igrigorik/ga-beacon)

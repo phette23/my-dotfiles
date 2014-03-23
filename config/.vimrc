@@ -3,6 +3,9 @@
 inoremap jj <ESC>
 " End my tweaks
 
+" Use the Molokai theme (originally created for TextMate by Wimer Hazenberg)
+colorscheme molokai
+
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)

@@ -10,6 +10,7 @@ alias dl="cd ~/Downloads"
 # Misc common commands
 alias cx="chmod +x"
 alias pgl='pgrep -lf'
+alias rf='rm -rf'
 alias g="git"
 # list only global NPM packages
 # broken currently, see https://github.com/npm/npm/pull/4179

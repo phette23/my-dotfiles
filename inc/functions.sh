@@ -73,8 +73,7 @@ phpserver () {
 # Install Grunt plugins and add them as `devDependencies` to `package.json`
 # Usage: `gi contrib-watch contrib-uglify zopfli`
 gi () {
-	local IFS=,
-	eval npm install --save-dev grunt-{"$*"}
+	npm install --save-dev grunt-${1}
 }
 
 # `s` with no arguments opens the current directory in Sublime Text, otherwise

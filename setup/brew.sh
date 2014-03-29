@@ -25,7 +25,7 @@ brew install ack \
 	drush \
 	exiftool \
 	findutils \
-    ghostscript --with-x11 \
+	ghostscript --with-x11 \
 	git \
 	gnupg \
 	homebrew/dupes/grep \

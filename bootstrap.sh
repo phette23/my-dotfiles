@@ -1,27 +1,22 @@
 #!/usr/bin/env bash
-cd "$(dirname "${BASH_SOURCE}")"
-git pull origin master
-doIt () {
-	rsync --exclude ".git/" \
-    	--exclude "config/" \
-    	--exclude "setup/" \
-    	--exclude ".DS_Store" \
-    	--exclude "bootstrap.sh" \
-	--exclude "README.md" \
-    	--exclude "LICENSE-MIT.txt" \
-    	--exclude "update.sh" \
-    	--exclude="dotfiles.sublime-*" \
-    	-av --no-perms . ~
-	rsync -av --no-perms ./config/ ~
+
+bootstrap () {
+    # sync .bashrc, .bash_profile
+    rsync -av --include=.bash* --exclude=* ~
+    # includes
+    rsync -ac ./inc/ ~/.inc
+    # config files, sudoers doesn't need to go
+	rsync -av --exclude="sudoers-linux" ./config/ ~
 	source ~/.bash_profile
 }
+
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	doIt
+	bootstrap
 else
 	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
 	echo
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt
+		bootstrap
 	fi
 fi
-unset doIt
+unset bootstrap

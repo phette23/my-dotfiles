@@ -130,19 +130,14 @@ top10 () {
 
 backup () {
     if [ -d /Volumes/share ]; then
-        # flags:
-        # a = archive mode, makes recursive & a host of other options
-        # v = verbose
-        # u = if destination file is more recent, keep it
-        # h = human-readable sizes, e.g. kb, gb
-        # z = use compression
+        local RFLAGS="-ahuz --progress"
         # use separate excludes file
-        rsync -avuzh --progress --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music /Volumes/share/
-        rsync -avuzh --progress ~/Movies/ /Volumes/share/Video/
-        rsync -avuzh --progress ~/Documents/zzzArc /Volumes/share/
-        # b = create backups
-        rsync -avuzhb --progress ~/Documents/OvalII.sparsebundle /Volumes/share/OvalII.sparsebundle
-        rsync -avuzhb --progress ~/Documents/nsn.dmg /Volumes/share/nsn.dmg
+        rsync $RFLAGS --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music /Volumes/share/
+        rsync $RFLAGS ~/Movies/ /Volumes/share/Video/
+        rsync $RFLAGS ~/Pictures/ /Volumes/share/Images/
+        rsync $RFLAGS ~/Documents/zzzArc /Volumes/share/
+        rsync $RFLAGS ~/Documents/OvalII.sparsebundle /Volumes/share/OvalII.sparsebundle
+        rsync $RFLAGS ~/Documents/nsn.dmg /Volumes/share/nsn.dmg
         # run Spideroak backups w/o the GUI
         # & backup ~/Documents to Google Drive concurrently
         /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode & \

@@ -38,6 +38,7 @@ brew install ack \
 	phantomjs \
 	php55 \
 	pngcrush \
+	python3 \
 	rbenv \
 	ruby-build \
 	"source-highlight" \

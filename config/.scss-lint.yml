@@ -1,11 +1,11 @@
 linters:
 
-  Indentation:
-    enabled: true
-    width: 4
+    Indentation:
+        enabled: true
+        width: 4
 
-  NameFormat:
-    enabled: false
+    NameFormat:
+        enabled: false
 
-  SpaceBetweenParens:
-    enabled: false
+    SpaceBetweenParens:
+        enabled: false

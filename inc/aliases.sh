@@ -6,6 +6,7 @@ alias .....="cd ../../../.."
 alias ~="cd ~"
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
+alias code="cd ~/code"
 
 # Misc common commands
 alias cx="chmod +x"

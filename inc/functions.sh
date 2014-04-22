@@ -148,4 +148,10 @@ backup () {
     fi
 }
 
+# A simple prompt for distraction-free screencasts
+simpleprompt () {
+    echo 'Simple prompt initiated. Source ~/.bash_profile to get back to complex.'
+    export PS1="\[${BOLD}${ORANGE}\]$ \[${RESET}\]"
+}
+
 source ~/.inc/cheat-sheets.sh

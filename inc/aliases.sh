@@ -17,7 +17,7 @@ alias g="git"
 # broken currently, see https://github.com/npm/npm/pull/4179
 alias npmg="npm ls -g --depth=0 2>/dev/null"
 # open sublime-project in current dir if there is one
-alias sp="[ -f *.sublime-project ] && subl *.sublime-project"
+alias sp="[ -f *.sublime-project ] && s *.sublime-project"
 
 # ls aliases
 # Detect which `ls` flavor is in use

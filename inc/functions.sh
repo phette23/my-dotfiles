@@ -135,7 +135,7 @@ backup () {
         rsync $RFLAGS --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music /Volumes/share/
         rsync $RFLAGS ~/Movies/ /Volumes/share/Video/
         rsync $RFLAGS ~/Pictures/ /Volumes/share/Images/
-        rsync $RFLAGS ~/Documents/zzzArc /Volumes/share/
+        rsync $RFLAGS ~/Documents/zzz /Volumes/share/
         rsync $RFLAGS ~/Documents/OvalII.sparsebundle /Volumes/share/OvalII.sparsebundle
         rsync $RFLAGS ~/Documents/nsn.dmg /Volumes/share/nsn.dmg
         # run Spideroak backups w/o the GUI

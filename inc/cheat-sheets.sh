@@ -43,9 +43,10 @@ cheat () {
     echo
 }
 
+# Git cheats
 gcheat () {
-    # template: echo -e "$ORANGE cmd \t\t\t$RESET— description"
     chtitle "git cheatsheet"
+    chcolor 'g a -p' "\t\t\t-> stage piecemeal 'hunks' of a file"
     chcolor 'g d' "\t\t\t-> diff between latest commit & current state"
     chcolor 'g di $N' "\t\t\t-> diff betw N commits ago & current state"
     chcolor 'g go X' "\t\t\t-> goto branch X, create if doesn't exist"
@@ -56,6 +57,7 @@ gcheat () {
     echo
 }
 
+# Sublime Text cheats
 scheat () {
     chtitle "sublime text shortcuts"
     # taken from gist.github.com//lucasfais/1207002

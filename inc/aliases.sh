@@ -13,6 +13,7 @@ alias cx="chmod +x"
 alias pgl='pgrep -lf'
 alias rf='rm -rf'
 alias g="git"
+alias gs="git status -sb"
 # list only global NPM packages
 # broken currently, see https://github.com/npm/npm/pull/4179
 alias npmg="npm ls -g --depth=0 2>/dev/null"

@@ -131,13 +131,14 @@ top10 () {
 backup () {
     if [ -d /Volumes/share ]; then
         local RFLAGS="-ahuz --progress"
+        local DEST="/Volumes/share"
         # use separate excludes file
-        rsync $RFLAGS --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music /Volumes/share/
-        rsync $RFLAGS ~/Movies/ /Volumes/share/Video/
-        rsync $RFLAGS ~/Pictures/ /Volumes/share/Images/
-        rsync $RFLAGS ~/Documents/zzz /Volumes/share/
-        rsync $RFLAGS ~/Documents/OvalII.sparsebundle /Volumes/share/OvalII.sparsebundle
-        rsync $RFLAGS ~/Documents/nsn.dmg /Volumes/share/nsn.dmg
+        rsync $RFLAGS --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music ${DEST}/
+        rsync $RFLAGS ~/Movies/ ${DEST}/Video/
+        rsync $RFLAGS ~/Pictures/ ${DEST}/Images/
+        rsync $RFLAGS ~/Documents/zzz/ ${DEST}/zzz/
+        rsync $RFLAGS ~/Documents/OvalII.sparsebundle ${DEST}/OvalII.sparsebundle
+        rsync $RFLAGS ~/Documents/nsn.dmg ${DEST}/nsn.dmg
         # run Spideroak backups w/o the GUI
         # & backup ~/Documents to Google Drive concurrently
         /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode & \

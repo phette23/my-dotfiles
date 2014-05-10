@@ -9,9 +9,12 @@ npm install -g --quiet \
   generator-jekyllrb \
   generator-reveal \
   grunt-cli \
+  gulp \
   jshint \
   nodemon \
   phantomas \
   requirejs \
+  slush \
+  slush-h5bp \
   uglify-js \
   yo

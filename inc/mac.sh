@@ -92,11 +92,6 @@ end tell
 EOF
 }
 
-# Convert man page to PDF & open it
-pdfman () {
-    man -t "$*" | open -f -a /Applications/Preview.app
-}
-
 # tab $CMD opens a new tab & executes $CMD in it
 # stolen from oh-my-zsh's OS X plugin:
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/osx/osx.plugin.zsh
@@ -135,4 +130,25 @@ EOF
       end tell
 EOF
   }
+}
+
+backup () {
+    if [ -d /Volumes/share ]; then
+        local RFLAGS="-ahuz --progress"
+        local DEST="/Volumes/share"
+        # use separate excludes file
+        rsync $RFLAGS --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music ${DEST}/
+        rsync $RFLAGS ~/Movies/ ${DEST}/Video/
+        rsync $RFLAGS ~/Pictures/ ${DEST}/Images/
+        rsync $RFLAGS ~/Documents/zzz/ ${DEST}/zzz/
+        rsync $RFLAGS ~/Documents/OvalII.sparsebundle ${DEST}/OvalII.sparsebundle
+        rsync $RFLAGS ~/Documents/nsn.dmg ${DEST}/nsn.dmg
+        # run Spideroak backups w/o the GUI
+        # & backup ~/Documents to Google Drive concurrently
+        /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode & \
+            zip -rq documents.zip ~/Documents \
+            && mv documents.zip ~/Google\ Drive/backups/
+    else
+        echo "Connect to backup drive first."
+    fi
 }

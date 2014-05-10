@@ -43,7 +43,7 @@ if [ $? -eq 0 ]; then
 	}
 fi
 
-# Create a data URL from a file
+# Create data URL from a file
 dataurl () {
 	local mimeType=$(file -b --mime-type "$1")
 	if [[ $mimeType == text/* ]]; then
@@ -52,7 +52,7 @@ dataurl () {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
 
-# Start an HTTP server from a directory, optionally specifying the port
+# Start a Python HTTP server from a directory, optionally specifying the port
 server () {
 	local port="${1:-8000}"
 	sleep 1 && open "http://localhost:${port}/" &
@@ -108,9 +108,9 @@ o () {
     fi
 
     if [ $# -eq 0 ]; then
-    $opencmd .
+        $opencmd .
     else
-    $opencmd "$@"
+        $opencmd "$@"
     fi
 }
 
@@ -126,27 +126,6 @@ tre () {
 # from stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash#answer-68390
 top10 () {
     history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head
-}
-
-backup () {
-    if [ -d /Volumes/share ]; then
-        local RFLAGS="-ahuz --progress"
-        local DEST="/Volumes/share"
-        # use separate excludes file
-        rsync $RFLAGS --exclude-from ~/.inc/itunes-rsync-excludes.txt ~/Music ${DEST}/
-        rsync $RFLAGS ~/Movies/ ${DEST}/Video/
-        rsync $RFLAGS ~/Pictures/ ${DEST}/Images/
-        rsync $RFLAGS ~/Documents/zzz/ ${DEST}/zzz/
-        rsync $RFLAGS ~/Documents/OvalII.sparsebundle ${DEST}/OvalII.sparsebundle
-        rsync $RFLAGS ~/Documents/nsn.dmg ${DEST}/nsn.dmg
-        # run Spideroak backups w/o the GUI
-        # & backup ~/Documents to Google Drive concurrently
-        /Applications/SpiderOak.app/Contents/MacOS/SpiderOak --batchmode & \
-            zip -rq documents.zip ~/Documents \
-            && mv documents.zip ~/Google\ Drive/backups/
-    else
-        echo "Connect to backup drive first."
-    fi
 }
 
 # A simple prompt for distraction-free screencasts

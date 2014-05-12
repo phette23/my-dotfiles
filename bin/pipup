@@ -1,14 +1,12 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 '''
 Update all installed Python packages
 '''
-try:
-    import pip
-except ImportError:
-    print 'You need to install pip first: easy_install pip'
-    exit(1)
+import pip
+import re
 from subprocess import call
 
-# from https://stackoverflow.com/questions/2720014/upgrading-all-packages-with-pip
+# from stackoverflow.com/questions/2720014/upgrading-all-packages-with-pip
 for dist in pip.get_installed_distributions():
-    call("sudo pip install --upgrade " + dist.project_name, shell=True)
+    if not re.match('pyobjc', dist.project_name):
+        call('sudo pip install --upgrade ' + dist.project_name, shell=True)

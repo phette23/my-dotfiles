@@ -21,6 +21,7 @@ brew install ack \
 	bash \
 	bash-completion \
 	chromedriver \
+	cloc \
 	coreutils \
 	drush \
 	exiftool \

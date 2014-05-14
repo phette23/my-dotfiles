@@ -10,25 +10,23 @@ brew install brew-cask
 
 brew cask install \
   alfred \
-  audacity \
   calibre \
   clamxav \
   daisydisk \
   dropbox \
   firefox \
-  firefox-aurora \
   gimp \
   github \
   google-chrome \
   google-chrome-canary \
   google-drive \
-  google-music-manager \
+  music-manager \
   imageoptim \
   inkscape \
   istumbler \
   iterm2 \
   lastfm \
-  menu-meters \
+  menumeters \
   openrefine \
   pandoc \
   prey \

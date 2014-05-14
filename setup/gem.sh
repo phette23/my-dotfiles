@@ -3,7 +3,8 @@
 gem install \
 	compass \
 	jekyll \
+	jekyll-sitemap \
 	sass \
-    	scss-lint \
+	scss-lint \
 	showterm \
-    	sinatra
+	sinatra

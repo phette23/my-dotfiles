@@ -25,10 +25,10 @@
 	tags = tag -l
 	br = branch -a
 	rem = remote -v
-	# Credit an author on the latest commit
-	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
+	# Squash last commit into one before it
+	sq = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B -n ${1})\"; };f"
 
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -70,16 +70,15 @@
 	textconv = exiftool
 
 [help]
-    autocorrect = 1
+	autocorrect = 1
 
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
-# Use `origin` as the default remote on the `master` branch in all cases
-#[branch "master"]
-#	remote = origin
-#	merge = refs/heads/master
+[rebase]
+	# Git won't rebase a dirty working tree, this works around that
+	autostash = true
 
 # URL shorthands
 [url "git@github.com:"]

@@ -13,6 +13,7 @@ npm install -g --quiet \
   jshint \
   nodemon \
   phantomas \
+  plato \
   requirejs \
   slush \
   slush-h5bp \
